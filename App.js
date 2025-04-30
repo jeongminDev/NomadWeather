@@ -14,9 +14,7 @@ import Fontisto from '@expo/vector-icons/Fontisto';
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 // const SCREEN_WIDTH = Dimensions.get('window').width; // 위랑 똑같은 내용
 
-const API_KEY = '16b2a493e6745e3af510bbb6e2c6e1c9';
-// const API_KEY2 =
-//   'n%2B5UEBjFeHWmjVTyVmr9STPjpcqh%2F27NANSHDxurDQ6E3pI1shpexnjOdfod%2Fu6Z5H6%2B8TCKLp%2FLsaE4gtvvLw%3D%3D'; // 기상청청
+const apiKey = process.env.API_KEY;
 
 const icons = {
   Clouds: 'cloudy',
@@ -48,7 +46,7 @@ export default function App() {
     );
     setCity(location[0].city);
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
     );
     const json = await response.json();
     setDays(json.list);
